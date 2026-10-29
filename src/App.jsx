@@ -226,7 +226,7 @@ export default function App() {
           <div className="facts">
             <div><span>Patient</span><strong>{form.patientId}</strong></div>
             <div><span>Orders</span><strong>{form.orderIds.join(", ")}</strong></div>
-            <div><span>Payer</span><strong>{form.payerName}</strong></div>
+            <div><span>Insurance plan id</span><strong>{form.piInsurancePlanId}</strong></div>
             <div><span>Status</span><span className={"badge " + (form.status === "completed" ? "badge-good" : "badge-warn")}>{form.status}</span></div>
           </div>
           <div className="small muted mono">{form.questionnaireUrl}</div>

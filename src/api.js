@@ -1,7 +1,7 @@
 // =====================================================================================================
 // Payer Gateway DTR form API, used by the questionnaire app:
-//   GET  {gateway}/api/v1/dtr/forms/{formId}           the questions (+ answers saved so far)
-//   POST {gateway}/api/v1/dtr/forms/{formId}/answers   save answers -> FHIR QuestionnaireResponse at the Provider FHIR API
+//   GET  {gateway}/dtr/forms/{formId}           the questions (+ answers saved so far)
+//   POST {gateway}/dtr/forms/{formId}/answers   save answers -> FHIR QuestionnaireResponse at the Provider FHIR API
 // The gateway URL, API key and formId come from the link the EHR opened (query string).
 // =====================================================================================================
 
@@ -56,12 +56,12 @@ async function send(launch, path, method, body) {
 
 /** The form: questions, status, saved answers. */
 export function loadForm(launch) {
-  return send(launch, "/api/v1/dtr/forms/" + encodeURIComponent(launch.formId), "GET", null);
+  return send(launch, "/dtr/forms/" + encodeURIComponent(launch.formId), "GET", null);
 }
 
 /** Saves answers. complete = true -> status completed (all required questions must be answered). */
 export function saveAnswers(launch, answers, complete) {
-  return send(launch, "/api/v1/dtr/forms/" + encodeURIComponent(launch.formId) + "/answers", "POST", {
+  return send(launch, "/dtr/forms/" + encodeURIComponent(launch.formId) + "/answers", "POST", {
     answers: answers,
     complete: complete
   });
